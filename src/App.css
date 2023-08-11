@@ -1,0 +1,26 @@
+.folder,
+.file{
+  cursor: pointer;
+  width: 300px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.folder span{
+  font-size: 16px;
+}
+.folder button{
+  cursor: pointer;
+  border: 1px solid gray;
+  padding: 2px;
+  margin-right: 5px;
+}
+
+.input{
+  outline:none;
+  padding: 2px;
+}
+
+.nested{
+  padding-left: 25px;
+}
