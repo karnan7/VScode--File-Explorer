@@ -2,8 +2,10 @@ import React from 'react'
 
 const useFile = () => {
   return (
-    <div>useFile</div>
+    <div>
+        
+    </div>
   )
 }
 
-export default useFile
+export default useFile;
