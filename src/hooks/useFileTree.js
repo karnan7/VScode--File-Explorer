@@ -2,9 +2,10 @@ import React from 'react'
 
 const useFileTree = () => {
 
-  const insertNode = () => {
+  const insertNode = (isFolder) => {
     
   };
+
   return (
     <div>useFileTree</div>
   )
