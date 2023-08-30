@@ -2,8 +2,14 @@ import React from 'react'
 
 const useFileTree = () => {
 
-  const insertNode = () => {
-    
+  const insertNode = (folderId, tree, item, isFolder) => {
+    if(tree.id === folderId && isFolder) {
+      tree.items.unshift({
+        name: item,
+        isFolder,
+        items: [],
+      })
+    }
   };
 
   return (
