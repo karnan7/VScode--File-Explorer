@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import useFileTree from '../hooks/useFileTree';
 
 const Folder = ({explorer}) => {
-  const insertNode = useFileTree();
   const[expand, setExpand] = useState(false);
   const[showInput, setShowInput] = useState({
     visible: false,
