@@ -1,33 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import useInsertNode from "../hooks/useFileTree";
 
-const Folder = ({explorer}) => {
-  const[expand, setExpand] = useState(false);
-  const[showInput, setShowInput] = useState({
+const Folder = ({ explorer }) => {
+  const [expand, setExpand] = useState(false);
+  const [showInput, setShowInput] = useState({
     visible: false,
-    folder: null
+    folder: null,
   });
 
-  const handleAdd = (e,isFolder) => {
+  const handleAdd = (e, isFolder) => {
     e.stopPropagation();
     setExpand(true);
     setShowInput({
       visible: true,
-      folder:isFolder
-    })
-  }
+      folder: isFolder,
+    });
+  };
 
   const handleInput = (e) => {
-    if(e.keyCode ===13 && e.target.value){
-      setShowInput({...showInput, visible:false})
+    if (e.keyCode === 13 && e.target.value) {
+      setShowInput({ ...showInput, visible: false });
     }
-  }
+  };
 
-  if(explorer.isFolder){
+  if (explorer.isFolder) {
     return (
       <div>
-        <div 
-        className='folder'
-        onClick={() => setExpand(!expand)}>
+        <div className="folder" onClick={() => setExpand(!expand)}>
           <span>📁 {explorer.name}</span>
           <div>
             <button onClick={(e) => handleAdd(e, true)}>📁➕</button>
@@ -36,33 +35,33 @@ const Folder = ({explorer}) => {
         </div>
 
         {showInput.visible && (
-          <div className='nested'>
+          <div className="nested">
             <span>{showInput.folder ? "📁" : "📄"}</span>
             <input
-            type='text'
-            autoFocus
-            className='input'
-            onKeyDown={handleInput}
-            onBlur={(e) => setShowInput({...showInput, visible:false})}/>
+              type="text"
+              autoFocus
+              className="input"
+              onKeyDown={handleInput}
+              onBlur={(e) => setShowInput({ ...showInput, visible: false })}
+            />
           </div>
         )}
         {expand && (
-          <div className="nested" >
+          <div className="nested">
             {explorer.items.map((exp) => {
-              return <Folder key={exp.id} explorer={exp}/>
+              return <Folder key={exp.id} explorer={exp} />;
             })}
           </div>
         )}
       </div>
-    )
-  }else{
-    return(
-      <div className='file'>
+    );
+  } else {
+    return (
+      <div className="file">
         <span>📄{explorer.name}</span>
       </div>
-    )
+    );
   }
-
-}
+};
 
 export default Folder;
